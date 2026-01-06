@@ -26,11 +26,12 @@ Singleton {
 
     // Workspaces
     property string active_workspace_bg: "#fe8019"
+    property int workspaces_radius: 15
     property string inactive_workspace_bg: "#504945"
     property string workspaces_bg: "#3c3836"
     property int workspace_width: 10
     property int workspaces_spacing: 5
-    property string empty_workspace_label: "  "
+    property string empty_workspace_label: " "
     property string occupied_workspace_label: "󰮯"
 
     // Clock

@@ -4,9 +4,12 @@ import Quickshell
 import Quickshell.Hyprland
 import "../../../config"
 
-ColumnLayout {
+Rectangle {
     id: root
-    spacing: Appearance.workspaces_spacing
+    color: Appearance.workspaces_bg
+    radius: Appearance.workspaces_radius
+    implicitWidth: layout.implicitWidth + 6
+    implicitHeight: layout.implicitHeight + 15
 
     property var wsIdsToShow: {
         // This logic is unnecessary for rendering labels but
@@ -23,31 +26,43 @@ ColumnLayout {
         return ids;
     }
 
-    property int focusedWorkspaceId: Hyprland.workspaces.values.find(ws => ws.focused).id
+    property int focusedWorkspaceId: Hyprland.focusedWorkspace?.id
 
-    Repeater {
-        model: wsIdsToShow
+    ColumnLayout {
+        id: layout
+        spacing: Appearance.workspaces_spacing
+        anchors.centerIn: root
 
-        Rectangle {
-            property int wsId: wsIdsToShow[index]
-            property var ws: Hyprland.workspaces.values.find(w => w.id === wsId)
-            property bool isEmpty: !ws || ws.toplevels.values.length === 0
-            property bool isFocused: focusedWorkspaceId === wsId
+        Repeater {
+            model: wsIdsToShow
 
-            color: Appearance.bar_bg
-            implicitWidth: 25
-            implicitHeight: 25
-            Text {
-                color: isFocused ? Appearance.bar_fg : Appearance.bar_muted
-                anchors.centerIn: parent
-                text: isEmpty ? (isFocused ? Appearance.occupied_workspace_label : Appearance.empty_workspace_label) : Appearance.occupied_workspace_label
+            Rectangle {
+                property int wsId: wsIdsToShow[index]
+                property var ws: Hyprland.workspaces.values.find(w => w.id === wsId)
+                property bool isEmpty: !ws || ws.toplevels.values.length === 0
+                property bool isFocused: focusedWorkspaceId === wsId
 
-                MouseArea {
-                    anchors.fill: parent
-                    acceptedButtons: Qt.LeftButton
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: {
-                        ws.activate();
+                color: "transparent"
+                implicitWidth: 25
+                implicitHeight: 25
+                Text {
+                    color: isFocused ? Appearance.bar_fg : Appearance.bar_muted
+                    anchors.centerIn: parent
+                    text: isEmpty ? (isFocused ? Appearance.occupied_workspace_label : Appearance.empty_workspace_label) : Appearance.occupied_workspace_label
+                    font: ({
+                            pixelSize: 18
+                        })
+
+                    MouseArea {
+                        anchors.fill: parent
+                        acceptedButtons: Qt.LeftButton
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {
+                            //Commented out because it just let you activate occupied workspaces
+                            // This new way let's you activate any workspace
+                            // ws.activate();
+                            Hyprland.dispatch(`workspace ${wsId}`);
+                        }
                     }
                 }
             }
