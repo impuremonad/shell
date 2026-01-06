@@ -41,6 +41,15 @@ ColumnLayout {
                 color: isFocused ? Appearance.bar_fg : Appearance.bar_muted
                 anchors.centerIn: parent
                 text: isEmpty ? (isFocused ? Appearance.occupied_workspace_label : Appearance.empty_workspace_label) : Appearance.occupied_workspace_label
+
+                MouseArea {
+                    anchors.fill: parent
+                    acceptedButtons: Qt.LeftButton
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        ws.activate();
+                    }
+                }
             }
         }
     }
