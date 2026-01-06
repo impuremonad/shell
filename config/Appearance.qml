@@ -9,7 +9,8 @@ Singleton {
     property string font_family: "JetbrainsMono Nerd Font"
 
     // Wallpaper
-    property string wallpaper: "japan.png"
+    property string wallpaper_root_dir: "/home/impuremonad/Pictures/Wallpapers/"
+    property string wallpaper_name: "tartarus.png"
 
     // Bar
     property string bar_bg: "#282828"
