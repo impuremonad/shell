@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Wayland
 import "../../../config"
 
 Rectangle {
@@ -43,7 +44,7 @@ Rectangle {
                 property bool isFocused: focusedWorkspaceId === wsId
 
                 color: "transparent"
-                implicitWidth: 25
+                implicitWidth: Appearance.workspace_width
                 implicitHeight: 25
                 Text {
                     color: isFocused ? Appearance.bar_fg : Appearance.bar_muted

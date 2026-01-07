@@ -10,7 +10,7 @@ Singleton {
 
     // Wallpaper
     property string wallpaper_root_dir: "/home/impuremonad/Pictures/Wallpapers/"
-    property string wallpaper_name: "tartarus.png"
+    property string wallpaper_name: "penitent.png"
 
     // Bar
     property string bar_bg: "#282828"
@@ -30,7 +30,7 @@ Singleton {
     property int workspaces_radius: 15
     property string inactive_workspace_bg: "#504945"
     property string workspaces_bg: "#3c3836"
-    property int workspace_width: 10
+    property int workspace_width: 25
     property int workspaces_spacing: 5
     property string empty_workspace_label: " "
     property string occupied_workspace_label: "󰮯"
@@ -38,4 +38,8 @@ Singleton {
     // Clock
     property int clock_spacing: 2
     property string clock_color: "#ebdbb2"
+
+    // Window
+    property int window_thickness: 10
+    property int window_radius: 10
 }

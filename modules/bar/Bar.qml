@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Wayland
 import "components"
 import "../../config"
 
@@ -12,7 +13,7 @@ PanelWindow {
         bottom: true
         left: true
     }
-
+    WlrLayershell.layer: WlrLayer.Top
     implicitWidth: Appearance.bar_width
     implicitHeight: Screen.height
 
