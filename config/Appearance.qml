@@ -10,7 +10,7 @@ Singleton {
 
     // Wallpaper
     property string wallpaper_root_dir: "/home/impuremonad/Pictures/Wallpapers/"
-    property string wallpaper_name: "penitent.png"
+    property string wallpaper_name: "nasa.png"
 
     // Bar
     property string bar_bg: "#282828"

@@ -30,22 +30,36 @@ PanelWindow {
     mask: Region {
         x: root.borderThickness
         y: root.borderThickness
-        width: root.width - root.borderThickness
-        height: root.height - root.borderThickness
+        width: root.width - (root.borderThickness * 2)
+        height: root.height - (root.borderThickness * 2)
         intersection: Intersection.Subtract
     }
 
-    Rectangle {
-        id: frameCanvas
+    Item {
         anchors.fill: parent
-        color: Appearance.bar_bg
         layer.enabled: true
         layer.effect: MultiEffect {
-            maskSource: maskShape
-            maskEnabled: true
-            maskInverted: true
-            maskThresholdMin: 0.5
-            maskSpreadAtMin: 1
+            shadowEnabled: true
+            shadowColor: "black"
+            shadowOpacity: 1
+            shadowBlur: 1.5
+            shadowScale: 0.995
+            shadowVerticalOffset: 0
+            shadowHorizontalOffset: 0
+        }
+
+        Rectangle {
+            id: frameCanvas
+            anchors.fill: parent
+            color: Appearance.bar_bg
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                maskEnabled: true
+                maskSource: maskShape
+                maskInverted: true
+                maskThresholdMin: 0.5
+                maskSpreadAtMin: 1
+            }
         }
     }
 
